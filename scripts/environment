@@ -1,0 +1,18 @@
+#!/bin/bash
+
+export DINGO_LASER=1
+export DINGO_LASER_MODEL=ust10
+export DINGO_LASER_HOST=192.168.131.20
+
+export DINGO_LASER_SECONDARY=1
+export DINGO_LASER_SECONDARY_MODEL=ust10
+export DINGO_LASER_SECONDARY_HOST=192.168.131.21
+
+export DINGO_URDF_EXTRAS=$(catkin_find cpr_indoornav_dingo urdf/indoornav_dingo.urdf.xacro --first-only)
+
+if [ -z "$INDOORNAV_IMU_GX5" ] || [ "$INDOORNAV_IMU_GX5" = "0" ];
+then
+  export DINGO_CONFIG_EXTRAS=$(catkin_find cpr_indoornav_dingo config/indoornav_um7.yaml --first-only)
+else
+  export DINGO_CONFIG_EXTRAS=$(catkin_find cpr_indoornav_dingo config/indoornav_gx5.yaml --first-only)
+fi

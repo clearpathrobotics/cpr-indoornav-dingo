@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+
+import rospy
+
+from sensor_msgs.msg import BatteryState
+from std_msgs.msg import Header
+
+NaN = float('nan')
+
+# SLA batteries don't report their percentage, so infer it
+# from these voltage limits
+# Limits copied from dingo_firmware's lighting control code
+SLA_MAX_VOLTAGE = 12.9
+SLA_HALF_VOLTAGE = 12.0
+SLA_MIN_VOLTAGE = 11.2
+
+def linear_rescale(x, old_min, old_max, new_min, new_max, clip=True):
+    if clip and x < old_min:
+        return new_min
+    elif clip and x > old_max:
+        return new_max
+    else:
+        return float(x - old_min) / (old_max - old_min) * (new_max - new_min) + new_min
+
+def status_cb(data, node):
+    node.status_callback(data)
+
+class PowerStatusRelayNode:
+    def __init__(self):
+        rospy.init_node('dingo_power_monitor')
+
+    def start(self):
+        self.mcu_sub = rospy.Subscriber('/battery/status', BatteryState, status_cb, self)
+        self.battery_pub = rospy.Publisher('/export/rocksteady/bms/battery_status', BatteryState, queue_size=1)
+
+    def status_callback(self, data):
+        # if the percentage is negative (meaning SLA battery chemistry most-likely)
+        # approxiate the battery percenteage using a linear rescaling
+        if data.percentage < 0:
+            data.percentage = linear_rescale(data.voltage, SLA_MIN_VOLTAGE, SLA_MAX_VOLTAGE, 0, 1)
+
+        # re-fire the data in the same format
+        self.battery_pub.publish(data)
+
+if __name__=='__main__':
+    node = PowerStatusRelayNode()
+    node.start()
+    rospy.spin()

@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<launch>
+  <node pkg="cpr_indoornav_dingo" type="start_dingo_bridge" name="dingo_bridge_node" />
+</launch>
