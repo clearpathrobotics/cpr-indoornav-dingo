@@ -2,8 +2,8 @@
 Changelog for package cpr_indoornav_dingo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.3.2 (2022-11-24)
+------------------
 * Add the web GUI manual control input
 * Contributors: Chris Iverach-Brereton
 
