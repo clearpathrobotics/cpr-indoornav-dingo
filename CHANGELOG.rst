@@ -2,6 +2,11 @@
 Changelog for package cpr_indoornav_dingo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update to use Otto's 2.26 release
+* Contributors: Chris Iverach-Brereton, José Mastrangelo
+
 0.3.2 (2022-11-24)
 ------------------
 * Add the web GUI manual control input
