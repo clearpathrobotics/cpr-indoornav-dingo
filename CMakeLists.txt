@@ -13,6 +13,8 @@ install(PROGRAMS
   scripts/environment
   scripts/install
   scripts/dingo_power_monitor
+  scripts/dingo_safety_stop
+  scripts/dingo_twist_repub
   scripts/start_dingo_bridge
 
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}

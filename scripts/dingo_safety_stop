@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+"""Monitors /status and publishes to /platform/safety_stop
+"""
+
+import rospy
+from dingo_msgs.msg import Status
+from std_msgs.msg import Bool
+
+class DingoSafetyStopNode:
+    def on_status(self, msg):
+        self.safety_stop_pub.publish(not msg.stop_engaged)
+
+    def run(self):
+        self.safety_stop_pub = rospy.Publisher("/platform/safety_stop", Bool, queue_size=1)
+        self.status_sub = rospy.Subscriber("/status", Status, self.on_status)
+        rospy.spin()
+
+def main():
+    rospy.init_node("dingo_safety_stop_node")
+    node = DingoSafetyStopNode()
+    node.run()
+
+if __name__=="__main__":
+    main()
