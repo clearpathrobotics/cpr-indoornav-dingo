@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# By default we use Foxy, but we can optionally use Galactic or Rolling too
+# By default we use galactic, but we can optionally use foxy
 if [ -z "$ROS2_DISTRO" ];
 then
-  ROS2_DISTRO="foxy"
+  ROS2_DISTRO="galactic"
 fi
 
 # load the ROS1 environment
