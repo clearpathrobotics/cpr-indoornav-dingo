@@ -2,8 +2,8 @@
 Changelog for package cpr_indoornav_dingo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.2 (2024-05-27)
+------------------
 * Use galactic by default
 * Contributors: Chris Iverach-Brereton
 
