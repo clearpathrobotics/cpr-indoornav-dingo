@@ -2,6 +2,11 @@
 Changelog for package cpr_indoornav_dingo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Use galactic by default
+* Contributors: Chris Iverach-Brereton
+
 0.4.1 (2024-03-26)
 ------------------
 * Swap the priorities of /cmd_vel and /manual/cmd_vel to enable teleop assist via the GUI
