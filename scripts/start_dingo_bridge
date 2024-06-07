@@ -15,17 +15,6 @@ roslaunch --wait cpr_indoornav_dingo load_bridge_params.launch
 # load the ROS2 environment
 source /opt/ros/$ROS2_DISTRO/setup.bash
 
-# load the Clearpath/OTTO Motors ROS2 API
-# Automatically use the latest version
-if [ -d /opt/clearpath ];
-then
-  CLEARPATH_API_VERSION=$(ls -r /opt/clearpath/ | grep ros2 | head -1)
-  if ! [ -z "$CLEARPATH_API_VERSION" ];
-  then
-    source /opt/clearpath/${CLEARPATH_API_VERSION}/setup.bash
-  fi
-fi
-
 # if the ros1_bridge package has been built from source it may be in a custom workspace
 # so source that too
 if ! [ -z "$BRIDGE_SETUP_PATH" ];
