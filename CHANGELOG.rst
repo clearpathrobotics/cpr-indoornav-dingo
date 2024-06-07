@@ -2,6 +2,11 @@
 Changelog for package cpr_indoornav_dingo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Use the new ROS 2 API packages
+* Contributors: Chris Iverach-Brereton
+
 0.4.2 (2024-05-27)
 ------------------
 * Use galactic by default
