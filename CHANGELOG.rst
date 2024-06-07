@@ -2,8 +2,8 @@
 Changelog for package cpr_indoornav_dingo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.3 (2024-06-07)
+------------------
 * Use the new ROS 2 API packages
 * Contributors: Chris Iverach-Brereton
 
