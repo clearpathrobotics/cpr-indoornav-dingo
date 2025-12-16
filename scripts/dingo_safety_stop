@@ -3,16 +3,26 @@
 """
 
 import rospy
-from dingo_msgs.msg import Status
+from puma_motor_msgs.msg import MultiStatus
 from std_msgs.msg import Bool
 
 class DingoSafetyStopNode:
+    def __init_(self):
+        self._motor_fault = False
+
     def on_status(self, msg):
-        self.safety_stop_pub.publish(not msg.stop_engaged)
+        if  msg.drivers[0].fault > 0 or \
+            msg.drivers[1].fault > 0 or \
+            msg.drivers[2].fault > 0 or \
+            msg.drivers[0].fault > 0:
+            self._motor_fault = True
+        else:
+            self._motor_fault = False
+        self.safety_stop_pub.publish(self._motor_fault)
 
     def run(self):
         self.safety_stop_pub = rospy.Publisher("/platform/safety_stop", Bool, queue_size=1)
-        self.status_sub = rospy.Subscriber("/status", Status, self.on_status)
+        self.status_sub = rospy.Subscriber("/status", MultiStatus, self.on_status)
         rospy.spin()
 
 def main():
